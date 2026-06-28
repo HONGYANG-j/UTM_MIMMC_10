@@ -477,22 +477,34 @@ hr.r {{border:none;border-top:1px solid var(--border);margin:22px 0;}}
   font-weight:800!important;
 }}
 
-/* Select dropdown MENU — set BOTH background and text.
-   Bug was: only text color was set, so options rendered dark-on-dark ("black box"). */
-[data-baseweb="popover"] {{ background:#EAF4FF!important; }}
-[data-baseweb="popover"] * {{ color:var(--text)!important; }}
-ul[data-baseweb="menu"] {{ background:#EAF4FF!important; }}
-ul[data-baseweb="menu"] li {{
-  background:#FFFFFF!important;
-  color:var(--text)!important;
+/* Select dropdown MENU (rendered in a portal on <body>).
+   Anchor on ARIA roles — [role="listbox"] / li[role="option"] — which BaseWeb
+   applies consistently across Streamlit versions. The data-baseweb attributes
+   were NOT matching, so the menu stayed dark with faint text. */
+[data-baseweb="popover"],
+[data-baseweb="popover"] [data-baseweb="menu"],
+[data-baseweb="menu"],
+ul[role="listbox"],
+[role="listbox"] {{
+  background-color:#FFFFFF!important;
 }}
-ul[data-baseweb="menu"] li:hover {{
-  background:#EAF4FF!important;
-  color:var(--text)!important;
+[role="listbox"] li,
+li[role="option"],
+[data-baseweb="menu"] li {{
+  background-color:#FFFFFF!important;
+  color:#102A43!important;
 }}
-ul[data-baseweb="menu"] li[aria-selected="true"] {{
-  background:#EAF4FF!important;
-  color:var(--text)!important;
+/* force any nested span/div inside an option to dark too (kills the orange text) */
+li[role="option"] *,
+[role="listbox"] li * {{
+  color:#102A43!important;
+}}
+li[role="option"]:hover,
+[role="listbox"] li:hover {{
+  background-color:#D9ECFF!important;
+}}
+li[role="option"][aria-selected="true"] {{
+  background-color:#EAF4FF!important;
 }}
 
 iframe {{
