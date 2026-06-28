@@ -1206,7 +1206,7 @@ with tab3:
         for path in (os.path.join(base, name), name):
             if os.path.exists(path):
                 with open(path, "r", encoding="utf-8") as f:
-                    components.html(f.read(), height=2500, scrolling=False)
+                    components.html(f.read(), height=3000, scrolling=False)
                 loaded = True
                 break
         if loaded:
