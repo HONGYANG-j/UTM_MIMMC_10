@@ -479,9 +479,9 @@ hr.r {{border:none;border-top:1px solid var(--border);margin:22px 0;}}
 
 /* Select dropdown MENU — set BOTH background and text.
    Bug was: only text color was set, so options rendered dark-on-dark ("black box"). */
-[data-baseweb="popover"] {{ background:#FFFFFF!important; }}
+[data-baseweb="popover"] {{ background:#EAF4FF!important; }}
 [data-baseweb="popover"] * {{ color:var(--text)!important; }}
-ul[data-baseweb="menu"] {{ background:#FFFFFF!important; }}
+ul[data-baseweb="menu"] {{ background:#EAF4FF!important; }}
 ul[data-baseweb="menu"] li {{
   background:#FFFFFF!important;
   color:var(--text)!important;
