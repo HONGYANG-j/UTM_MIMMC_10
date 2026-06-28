@@ -367,6 +367,14 @@ hr.r {{border:none;border-top:1px solid var(--border);margin:22px 0;}}
   border:1px solid var(--cyan)!important;
   box-shadow:0 0 0 2px rgba(0,166,214,.16)!important;
 }}
+/* Selectbox CLOSED control — force readable value text + arrow on white */
+.stSelectbox [data-baseweb="select"] div,
+.stSelectbox [data-baseweb="select"] span,
+.stSelectbox [data-baseweb="select"] input {{
+  color:var(--text)!important;
+}}
+.stSelectbox [data-baseweb="select"] svg {{ fill:var(--text)!important; }}
+
 .stSlider [data-baseweb="slider"] > div {{background:rgba(168,207,240,.55)!important;}}
 .stSlider [role="slider"] {{
   background:var(--cyan)!important;
@@ -469,8 +477,21 @@ hr.r {{border:none;border-top:1px solid var(--border);margin:22px 0;}}
   font-weight:800!important;
 }}
 
-/* Select dropdown menu text */
-[data-baseweb="popover"] * {{
+/* Select dropdown MENU — set BOTH background and text.
+   Bug was: only text color was set, so options rendered dark-on-dark ("black box"). */
+[data-baseweb="popover"] {{ background:#FFFFFF!important; }}
+[data-baseweb="popover"] * {{ color:var(--text)!important; }}
+ul[data-baseweb="menu"] {{ background:#FFFFFF!important; }}
+ul[data-baseweb="menu"] li {{
+  background:#FFFFFF!important;
+  color:var(--text)!important;
+}}
+ul[data-baseweb="menu"] li:hover {{
+  background:#D9ECFF!important;
+  color:var(--text)!important;
+}}
+ul[data-baseweb="menu"] li[aria-selected="true"] {{
+  background:#EAF4FF!important;
   color:var(--text)!important;
 }}
 
@@ -1206,7 +1227,7 @@ with tab3:
         for path in (os.path.join(base, name), name):
             if os.path.exists(path):
                 with open(path, "r", encoding="utf-8") as f:
-                    components.html(f.read(), height=3000, scrolling=False)
+                    components.html(f.read(), height=5000, scrolling=False)
                 loaded = True
                 break
         if loaded:
