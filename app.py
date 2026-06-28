@@ -487,7 +487,7 @@ ul[data-baseweb="menu"] li {{
   color:var(--text)!important;
 }}
 ul[data-baseweb="menu"] li:hover {{
-  background:#D9ECFF!important;
+  background:#EAF4FF!important;
   color:var(--text)!important;
 }}
 ul[data-baseweb="menu"] li[aria-selected="true"] {{
