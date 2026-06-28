@@ -32,7 +32,7 @@ import ai_backend as ai
 st.set_page_config(
     page_title="MIMMC2026 Q3 — 2030 Market Forecast",
     page_icon="📊", layout="wide",
-    initial_sidebar_state="auto",
+    initial_sidebar_state="expanded",
 )
 
 # ── Design tokens: modern clean-tech light theme ──────────────────────────────
@@ -147,28 +147,14 @@ html, body, .stApp, [data-testid="stAppViewContainer"] {{
   visibility:hidden;
 }}
 
-/* Pin the sidebar open on DESKTOP only */
-@media (min-width: 900px) {{
-  [data-testid="stSidebar"] {{
-    display: block !important;
-    visibility: visible !important;
-    transform: translateX(0px) !important;
-    min-width: 320px !important;
-    max-width: 320px !important;
-    width: 320px !important;
-  }}
-}}
-/* On phones: let it collapse normally, cap its width, keep the toggle usable */
-@media (max-width: 899px) {{
-  [data-testid="stSidebar"] {{
-    min-width: 0 !important;
-    max-width: 85vw !important;
-    width: 85vw !important;
-  }}
-  header {{ display: block !important; visibility: visible !important; }}
-  [data-testid="stAppViewContainer"] > div:first-child {{ display: block !important; }}
-  [data-testid="collapsedControl"],
-  [data-testid="stSidebarCollapseButton"] {{ display: flex !important; visibility: visible !important; }}
+/* FORCE SIDEBAR ALWAYS EXPANDED */
+[data-testid="stSidebar"] {{
+  display: block !important;
+  visibility: visible !important;
+  transform: translateX(0px) !important;
+  min-width: 320px !important;
+  max-width: 320px !important;
+  width: 320px !important;
 }}
 
 .block-container {{
