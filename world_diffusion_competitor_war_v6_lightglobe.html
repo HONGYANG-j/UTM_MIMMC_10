@@ -1389,6 +1389,23 @@ function setupExtras() {
 }
 
 init();
+
+// Report real height to the Streamlit parent so the iframe fits with no inner scrollbar
+function reportHeight() {
+  const h = Math.max(
+    document.body.scrollHeight,
+    document.documentElement.scrollHeight
+  );
+  window.parent.postMessage(
+    { type: 'streamlit:setFrameHeight', height: h },
+    '*'
+  );
+}
+window.addEventListener('load', reportHeight);
+window.addEventListener('resize', reportHeight);
+// Re-measure when the board changes (globe loads late, sims add result cards, etc.)
+try { new ResizeObserver(reportHeight).observe(document.body); } catch (e) {}
+setInterval(reportHeight, 1500);
 </script>
 </body>
 </html>
